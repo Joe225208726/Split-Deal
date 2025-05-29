@@ -1,7 +1,7 @@
 // src/cronJobs/cronScheduler.js
 const cron = require('node-cron');
-const fetchDealsJob = require('./fetchDealsJob');
-const dealExpiryJob = require('./dealExpiryJob');
+const fetchDealsJob = require('./fetchDealsJob.js');
+const dealExpiryJob = require('./dealExpiryJob.js');
 const connectDB = require('../config/db');
 require('dotenv').config();
 

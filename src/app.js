@@ -54,6 +54,14 @@ app.use("/api/group", groupRoutes);
 app.use("/api/groupMember", groupMemberRoutes);
 app.use("/api/user", userRoutes);
 
+// Student info route for SIT725 Docker task
+app.get("/api/student", (req, res) => {
+  res.json({
+    name: "Joshua Nepolian",
+    studentId: "225208726"
+  });
+});
+
 // Serve frontend
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
