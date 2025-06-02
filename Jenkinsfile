@@ -9,30 +9,30 @@ pipeline {
         stage('Build') {
             steps {
                 echo '🔨 Building the Docker image...'
-                sh 'docker build -t $DOCKER_IMAGE .'
+                bat 'docker build -t %DOCKER_IMAGE% .'
             }
         }
 
         stage('Test') {
             steps {
                 echo '🧪 Running unit tests with Mocha...'
-                sh 'npm install'
-                sh 'npm test' // Assumes "test" script exists in package.json
+                bat 'npm install'
+                bat 'npm test'
             }
         }
 
         stage('Security Scan') {
             steps {
-                echo '🔐 Running Trivy for vulnerability scanning...'
-                sh 'trivy image $DOCKER_IMAGE || true'
+                echo '🔐 Running Trivy scan...'
+                bat 'trivy image %DOCKER_IMAGE% || exit /b 0'
             }
         }
 
         stage('Deploy') {
             steps {
-                echo '🚀 Deploying container with Docker Compose...'
-                sh 'docker-compose down || true'
-                sh 'docker-compose up -d'
+                echo '🚀 Deploying with Docker Compose...'
+                bat 'docker-compose down || exit /b 0'
+                bat 'docker-compose up -d'
             }
         }
     }
