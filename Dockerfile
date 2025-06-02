@@ -12,7 +12,7 @@ RUN npm install
 COPY . .
 
 # Step 5: Copy environment file
-COPY .env .env
+# COPY .env .env
 
 # Step 6: Expose the app port
 EXPOSE 3000
