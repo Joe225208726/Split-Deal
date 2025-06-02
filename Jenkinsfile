@@ -9,15 +9,14 @@ pipeline {
         stage('Build') {
             steps {
                 echo '🔨 Building the Docker image...'
-                bat 'docker build --no-cache -t %DOCKER_IMAGE% .'
-
-'
+                bat "docker rmi -f %DOCKER_IMAGE% || exit /b 0"
+                bat "docker build -t %DOCKER_IMAGE% ."
             }
         }
 
         stage('Test') {
             steps {
-                echo '🧪 Running unit tests with Mocha...'
+                echo '🧪 Running unit tests...'
                 bat 'npm install'
                 bat 'npm test'
             }
@@ -25,8 +24,8 @@ pipeline {
 
         stage('Security Scan') {
             steps {
-                echo '🔐 Running Trivy scan...'
-                bat 'trivy image %DOCKER_IMAGE% || exit /b 0'
+                echo '🔐 Running security scan...'
+                bat 'npm audit || exit /b 0'
             }
         }
 
