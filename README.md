@@ -20,7 +20,8 @@ Frontend: Vanilla JS
 Setup
 Clone the repo
 
-git clone https://github.com/vaghelaparth5/Split-Deal.git
+git clone git clone https://github.com/Joe225208726/Split-Deal.git
+
 cd Split-Deal
 
 Install dependencies:
@@ -153,3 +154,15 @@ Edit
 "studentId": "225208726"
 }
 This confirms the application is correctly running inside the Docker container.
+
+## 🐳 Dockerized Setup
+
+### Prerequisites
+
+- Docker Desktop installed and running
+
+### Run the app
+
+```bash
+docker-compose up --build
+```
