@@ -9,7 +9,9 @@ pipeline {
         stage('Build') {
             steps {
                 echo '🔨 Building the Docker image...'
-                bat 'docker build -t %DOCKER_IMAGE% .'
+                bat 'docker build --no-cache -t %DOCKER_IMAGE% .'
+
+'
             }
         }
 
